@@ -60,4 +60,6 @@ src/css/style.css    ← all styles
 
 ## My personal instructions
 
-_(Add your own here — what helps you learn, what you want the agent to always or never do, context about your project.)_
+- Always show me the full updated code before I accept the changes so that I can see what was modified. 
+- Ask me to test the code in the browser before assuming that it works, especially when changes are made to the functionality. 
+- Keep the explanations simple, because I learn best by following along, rather than reading long sets of instructions.
