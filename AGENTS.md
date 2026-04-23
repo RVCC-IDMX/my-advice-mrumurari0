@@ -64,3 +64,5 @@ src/css/style.css    ← all styles
 - Always show me the full updated code before I accept the changes so that I can see what was modified. 
 - Ask me to test the code in the browser before assuming that it works, especially when changes are made to the functionality. 
 - Keep the explanations simple, because I learn best by following along, rather than reading long sets of instructions.
+- Use querySelector instead of getElementById. 
+- Use safe DOM methods instead of innerHTML when possible, so that the code is not risky. 

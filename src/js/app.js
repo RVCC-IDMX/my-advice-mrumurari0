@@ -10,6 +10,7 @@ form.addEventListener('submit', (e) => {
 
   const filtered = filterShows(shows, input.value);
 
+  // Safe: this only clears the existing content, and does not build HTML from user input.
   results.innerHTML = '';
 
   if (filtered.length === 0) {
