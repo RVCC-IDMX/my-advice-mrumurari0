@@ -1,9 +1,18 @@
 /* Custom properties — use hsl() for all colors */
 :root {
-  --color-text: hsl(220, 15%, 20%);
-  --color-bg: hsl(220, 15%, 97%);
-  --color-accent: hsl(220, 70%, 50%);
-  --color-muted: hsl(220, 10%, 60%);
+  --sage-green: hsl(120, 20%, 40%);
+  --forest-green: hsl(120, 30%, 25%);
+  --olive: hsl(60, 20%, 40%);
+  --dusty-rose: hsl(340, 30%, 70%);
+  --blush-pink: hsl(340, 40%, 80%);
+  --mauve: hsl(320, 20%, 60%);
+  --mustard: hsl(45, 60%, 60%);
+  --golden-yellow: hsl(45, 70%, 50%);
+  --warm-beige: hsl(30, 20%, 85%);
+  --cream: hsl(45, 30%, 95%);
+  --off-white: hsl(30, 10%, 98%);
+  --text-dark: hsl(120, 10%, 20%);
+  --text-muted: hsl(120, 5%, 50%);
 }
 
 /* Reset */
@@ -17,9 +26,12 @@
 
 /* Base */
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--text-dark);
+  background-color: var(--cream);
   line-height: 1.6;
   min-height: 100dvh;
   display: flex;
@@ -37,13 +49,120 @@ main {
 header {
   padding: 1.5rem 1rem;
   text-align: center;
+  background-color: var(--off-white);
+  border-bottom: 2px solid var(--sage-green);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: var(--forest-green);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.25rem;
+  color: var(--mauve);
+  font-style: italic;
 }
 
 footer {
   padding: 1rem;
   text-align: center;
-  color: var(--color-muted);
+  color: var(--text-muted);
   font-size: 0.875rem;
+  background-color: var(--warm-beige);
+}
+
+/* Form */
+#recommendation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--off-white);
+  border-radius: 8px;
+  border: 1px solid var(--sage-green);
+}
+
+#recommendation-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#recommendation-form label {
+  font-weight: 600;
+  color: var(--forest-green);
+}
+
+#recommendation-form select {
+  padding: 0.5rem;
+  border: 1px solid var(--olive);
+  border-radius: 4px;
+  background-color: var(--cream);
+  font-size: 1rem;
+}
+
+#recommendation-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--dusty-rose);
+  color: var(--off-white);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#recommendation-form button:hover {
+  background-color: var(--blush-pink);
+}
+
+/* Results */
+#results {
+  margin-top: 2rem;
+}
+
+.show-item {
+  background-color: var(--off-white);
+  border: 1px solid var(--sage-green);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.show-item h3 {
+  color: var(--forest-green);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.show-item p {
+  color: var(--text-dark);
+  line-height: 1.5;
 }
 
 /* Mobile-first — add min-width queries as needed */
+@media (min-width: 768px) {
+  main {
+    padding: 3rem 2rem;
+  }
+
+  header {
+    padding: 2rem 2rem;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  #recommendation-form {
+    padding: 2rem;
+  }
+
+  .show-item {
+    padding: 1.5rem;
+  }
+}

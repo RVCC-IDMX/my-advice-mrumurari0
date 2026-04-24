@@ -3,18 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Advice</title>
+    <title>What Should I Watch?</title>
     <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body>
     <header>
-      <h1>My Advice</h1>
+      <h1>What Should I Watch?</h1>
+      <p>Discover your next favorite show</p>
     </header>
 
     <main>
-      <form>
-        <input type="text" placeholder="Search shows..." />
-        <button type="submit">Search</button>
+      <form id="recommendation-form">
+        <div>
+          <label for="mood-select">Mood:</label>
+          <select id="mood-select" name="mood">
+            <option value="Any mood">Any mood</option>
+            <option value="lighthearted">Lighthearted</option>
+            <option value="comfort">Comfort</option>
+            <option value="funny">Funny</option>
+            <option value="wholesome">Wholesome</option>
+            <option value="thoughtful">Thoughtful</option>
+            <option value="thrilling">Thrilling</option>
+            <option value="mind-bending">Mind-bending</option>
+            <option value="adventurous">Adventurous</option>
+            <option value="intense">Intense</option>
+            <option value="emotional">Emotional</option>
+            <option value="focused">Focused</option>
+            <option value="spooky">Spooky</option>
+            <option value="slow-burn">Slow-burn</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="genre-select">Genre:</label>
+          <select id="genre-select" name="genre">
+            <option value="Any genre">Any genre</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama">Drama</option>
+            <option value="sci-fi">Sci-Fi</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="mystery">Mystery</option>
+            <option value="crime">Crime</option>
+            <option value="adventure">Adventure</option>
+            <option value="romance">Romance</option>
+            <option value="documentary">Documentary</option>
+            <option value="animation">Animation</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="length-select">Episode Length:</label>
+          <select id="length-select" name="episodeLength">
+            <option value="Any length">Any length</option>
+            <option value="15-30 min">15-30 min</option>
+            <option value="30-45 min">30-45 min</option>
+            <option value="45-60 min">45-60 min</option>
+            <option value="60+ min">60+ min</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="platform-select">Platform:</label>
+          <select id="platform-select" name="platform">
+            <option value="Any platform">Any platform</option>
+            <option value="Netflix">Netflix</option>
+            <option value="Peacock">Peacock</option>
+            <option value="Disney+">Disney+</option>
+            <option value="Hulu">Hulu</option>
+            <option value="Max">Max</option>
+            <option value="Apple TV+">Apple TV+</option>
+            <option value="Paramount+">Paramount+</option>
+            <option value="Prime Video">Prime Video</option>
+            <option value="HBO">HBO</option>
+          </select>
+        </div>
+
+        <button type="submit">Find My Shows</button>
       </form>
 
       <div id="results"></div>
