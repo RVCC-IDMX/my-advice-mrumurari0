@@ -22,5 +22,5 @@ results.classList.add('experiment-results');
 
 // Experiment 5: I changed the placeholder text in the input to practice
 // updating an attribute-like property on a form element.
-const input = document.querySelector('input');
-input.placeholder = 'Type a show name here...';
+const moodSelect = document.querySelector('#moodSelect');
+moodSelect.placeholder = 'Type a show name here...';
