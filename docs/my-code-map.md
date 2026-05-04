@@ -10,12 +10,12 @@ For each file, write one sentence about what it does.
 
 | File                    | What it does |
 | ----------------------- | ------------ |
-| `src/js/app.js`         |              |
-| `src/js/matching.js`    |              |
-| `src/js/data.js`        |              |
-| `src/js/experiments.js` |              |
-| `src/css/style.css`     |              |
-| `index.html`            |              |
+| `src/js/app.js`         | Handles the form submission, collects the user input, updates the page with matching results, and filters the shows. |
+| `src/js/matching.js`    | Contains the function that checks if a show matches the users filters. |
+| `src/js/data.js`        | Stores the dataset of the TV shows and the properties of them. |
+| `src/js/experiments.js` | Contains Week 2 DOM experiments which were used to practice manipulation of elements on the page. |
+| `src/css/style.css`     | Defines the visual styling and layout of the website. |
+| `index.html`            | Provides the structure of the webpage, including the form and results container. |
 
 ---
 
@@ -23,14 +23,24 @@ For each file, write one sentence about what it does.
 
 Look at your `index.html` and find the form element.
 
-- Form ID: `#___________`
-- Select element ID: `#___________`
+- Form ID: `#recommendation-form`
+- Select element ID: `#mood-select`
 
 - What moods/options are in the select?
 
-  -
-  -
-  -
+  - lighthearted
+  - comfort
+  - funny
+  - wholesome
+  - thrilling
+  - mind-bending
+  - adventurous
+  - intense
+  - emotional
+  - focused
+  - slow-burn
+  - spooky
+  - dark
 
 ---
 
@@ -38,8 +48,8 @@ Look at your `index.html` and find the form element.
 
 Where do results appear on the page?
 
-- Container ID or class: `___________`
-- What element type is it? (`div`, `section`, etc.): `___________`
+- Container ID or class: `#results`
+- What element type is it? (`div`, `section`, etc.): `div`
 
 ---
 
@@ -47,8 +57,8 @@ Where do results appear on the page?
 
 Look at how your app.js builds each result card. What elements make up one card?
 
-- Card element type: `___________`
-- Card class name: `___________`
+- Card element type: `div`
+- Card class name: `show-item`
 
 - What is inside each card? (list the child elements and what data they show)
   -
@@ -61,7 +71,7 @@ Look through your app.js for any `addEventListener` calls. List each one.
 
 | Where in the code | Event type | What it does |
 | ----------------- | ---------- | ------------ |
-|                   |            |              |
+|'form.addEventListener('submit', ....)'|'submit'|This stops the page from refreshing, reads the selected values, filters, and sows the matching results|
 
 If you do not see any `addEventListener` calls, write "none found" — and then look again, because the form handler uses one.
 
@@ -71,13 +81,18 @@ If you do not see any `addEventListener` calls, write "none found" — and then 
 
 Open `src/js/data.js` and look at one item in your dataset.
 
-- How many items total? `___`
+- How many items total? `24`
 
 - Properties on each item
 
-  -
-  -
-  -
+  - title
+  - genre
+  - mood
+  - episodeLength
+  - seasons
+  - totalEpisodes
+  - platforms
+  - popularity
 
 ---
 
@@ -85,7 +100,7 @@ Open `src/js/data.js` and look at one item in your dataset.
 
 Do you have a `.hidden` class or similar in your CSS? If so, what does it do?
 
-- Class name: `___________`
-- What CSS rule does it apply? `___________`
+- Class name: `none found`
+- What CSS rule does it apply? `none yet - I will create a .hidden class this week.`
 
 If you do not have one, you will create one this week.

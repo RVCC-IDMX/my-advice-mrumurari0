@@ -4,30 +4,30 @@ Use this checklist to make sure you have completed every part of the assignment.
 
 ## Part 0 — Prepare your agent
 
-- [ ] Updated AGENTS.md "About this student" section (start-of-week ritual)
-- [ ] Read `docs/rules/README.md` and browsed the rule pages
-- [ ] Added modern JS rules to AGENTS.md before starting any code work
+- [-] Updated AGENTS.md "About this student" section (start-of-week ritual)
+- [-] Read `docs/rules/README.md` and browsed the rule pages
+- [-] Added modern JS rules to AGENTS.md before starting any code work
 
 ## Part 1 — Know your code
 
-- [ ] Filled out every section of `docs/my-code-map.md` by reading actual files
-- [ ] Reviewed experiments.js and decided which experiments to keep
-- [ ] Moved keeper experiments into `app.js`
-- [ ] Deleted `src/js/experiments.js`
-- [ ] Removed the experiments script tag from `index.html`
-- [ ] Ran `npm run lint` — passes
+- [-] Filled out every section of `docs/my-code-map.md` by reading actual files
+- [-] Reviewed experiments.js and decided which experiments to keep
+- [-] Moved keeper experiments into `app.js`
+- [-] Deleted `src/js/experiments.js`
+- [-] Removed the experiments script tag from `index.html`
+- [-] Ran `npm run lint` — passes
 
 ## Part 2 — Extract view functions into views.js
 
-- [ ] Created `src/js/views.js`
-- [ ] `showResults(items, container)` builds cards with createElement/textContent
-- [ ] `showNoResults(container)` displays a no-results message
-- [ ] `showDetail(item, container)` displays a single item with all properties and a back button
-- [ ] All three functions are exported
-- [ ] `app.js` imports view functions from `views.js`
-- [ ] `.hidden` class exists in CSS (`display: none`)
-- [ ] Form submit still displays results correctly
-- [ ] Ran `npm run lint` — passes
+- [-] Created `src/js/views.js`
+- [-] `showResults(items, container)` builds cards with createElement/textContent
+- [-] `showNoResults(container)` displays a no-results message
+- [-] `showDetail(item, container)` displays a single item with all properties and a back button
+- [-] All three functions are exported
+- [-] `app.js` imports view functions from `views.js`
+- [-] `.hidden` class exists in CSS (`display: none`)
+- [-] Form submit still displays results correctly
+- [-] Ran `npm run lint` — passes
 
 ## Part 3 — Wire events and delegation
 

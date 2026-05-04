@@ -165,4 +165,8 @@ footer {
   .show-item {
     padding: 1.5rem;
   }
+
+  .hidden {
+    display: none;
+  }
 }

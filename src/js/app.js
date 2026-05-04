@@ -1,11 +1,30 @@
 import { shows } from './data.js';
-import { meetsAllCriteria, getPopularityBadge } from './matching.js';
+import { meetsAllCriteria } from './matching.js';
+import { showResults, showNoResults, showDetail } from './views.js';
+
+// Heading update
+const heading = document.querySelector('h1');
+heading.textContent = 'My Advice — Personalized TV Show Recommendations';
+
+// Button text update
+const button = document.querySelector('button');
+button.textContent = 'Search Shows';
+
+// Helpful paragraph under form
+const experimentParagraph = document.createElement('p');
+experimentParagraph.textContent =
+  'Use the filters above to discover your next favorite show.';
+document.querySelector('main').append(experimentParagraph);
 
 const form = document.querySelector('#recommendation-form');
 const results = document.querySelector('#results');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+let lastResults = [];
+
+// This form handler stops the page from refreshing, reads the selected filters,
+// filters the show data, and sends matching shows to the view functions.
+function handleFormSubmit(event) {
+  event.preventDefault();
 
   const moodSelect = document.querySelector('#mood-select');
   const genreSelect = document.querySelector('#genre-select');
@@ -20,31 +39,40 @@ form.addEventListener('submit', (e) => {
   };
 
   const filtered = shows.filter((show) => meetsAllCriteria(show, preferences));
-
-  results.textContent = '';
+  lastResults = filtered;
 
   if (filtered.length === 0) {
-    results.textContent =
-      'No shows match all your preferences. Try adjusting your filters!';
+    showNoResults(results);
     return;
   }
 
-  const countDiv = document.createElement('div');
-  countDiv.textContent = `Found ${filtered.length} shows that match your preferences`;
-  results.appendChild(countDiv);
+  showResults(filtered, results);
+}
 
-  filtered.forEach((show) => {
-    const showDiv = document.createElement('div');
-    showDiv.className = 'show-item';
+function handleCardClick(event) {
+  const card = event.target.closest('.advice-card');
 
-    const title = document.createElement('h3');
-    title.textContent = show.title;
-    showDiv.appendChild(title);
+  if (!card) {
+    return;
+  }
 
-    const details = document.createElement('p');
-    details.textContent = `Genre: ${show.genre} | Mood: ${show.mood} | Episode Length: ${show.episodeLength} | Seasons: ${show.seasons} | Total Episodes: ${show.totalEpisodes} | Platforms: ${show.platforms.join(', ')} | ${getPopularityBadge(show.popularity)}`;
-    showDiv.appendChild(details);
+  const selectedShow = shows.find((show) => show.title === card.dataset.title);
 
-    results.appendChild(showDiv);
-  });
-});
+  if (!selectedShow) {
+    return;
+  }
+
+  showDetail(selectedShow, results);
+}
+
+function handleBackClick(event) {
+  if (!event.target.classList.contains('back-button')) {
+    return;
+  }
+
+  showResults(lastResults, results);
+}
+
+form.addEventListener('submit', handleFormSubmit);
+results.addEventListener('click', handleCardClick);
+results.addEventListener('click', handleBackClick);
