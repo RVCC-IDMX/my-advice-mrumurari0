@@ -31,24 +31,24 @@ Use this checklist to make sure you have completed every part of the assignment.
 
 ## Part 3 — Wire events and delegation
 
-- [ ] Added a comment above the inherited form submit handler explaining what it does
-- [ ] Event delegation: one click listener on the results container (not on individual cards)
-- [ ] Uses `.closest()` to identify the clicked card
-- [ ] Clicking a card shows the detail view
-- [ ] Clicking the back button returns to the results view
-- [ ] Uses `preventDefault()` on the form
-- [ ] All event handlers are named callback functions (not anonymous inline)
-- [ ] Full flow works: submit form → results → click card → detail → click back → results
-- [ ] Ran `npm run lint` — passes
+- [-] Added a comment above the inherited form submit handler explaining what it does
+- [-] Event delegation: one click listener on the results container (not on individual cards)
+- [-] Uses `.closest()` to identify the clicked card
+- [-] Clicking a card shows the detail view
+- [-] Clicking the back button returns to the results view
+- [-] Uses `preventDefault()` on the form
+- [-] All event handlers are named callback functions (not anonymous inline)
+- [-] Full flow works: submit form → results → click card → detail → click back → results
+- [-] Ran `npm run lint` — passes
 
 ## Part 4 — AGENTS.md + reflect
 
-- [ ] Updated AGENTS.md "About this student" with what you actually learned
-- [ ] Added at least 2 more personal instructions about events or SPA patterns
-- [ ] Completed every question in `docs/reflections/week-3-reflection.md`
-- [ ] Ran `npm run lint` — passes
-- [ ] Ran `npm run build` — builds successfully
-- [ ] Deployed to Netlify
+- [-] Updated AGENTS.md "About this student" with what you actually learned
+- [-] Added at least 2 more personal instructions about events or SPA patterns
+- [-] Completed every question in `docs/reflections/week-3-reflection.md`
+- [-] Ran `npm run lint` — passes
+- [-] Ran `npm run build` — builds successfully
+- [-] Deployed to Netlify
 - [ ] Pushed to GitHub
 - [ ] GitHub Actions lint check shows green
 

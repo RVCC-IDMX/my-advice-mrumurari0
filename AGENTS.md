@@ -3,7 +3,7 @@
 ## About this student
 
 JavaScript student, post-midterm. Knows: `const`/`let`, template literals, `if/else`, arrays, objects, JSON, ES modules (`import`/`export`), npm, git, Netlify, and DOM manipulation (querySelector, createElement, textContent, event listeners). 
-Currently learning how event listeners work in more depth, how to use event delegation, and how to structure code using view functions to separate rendering from logic. Beginning to understand how to build single-page app behavior using JavaScript.
+Now understands how to use event delegation with '.closest()', data attributes, and named event handler functions. Has experience with using view functions to separate rendering from logic, and how to build single-page app behavior, like switching between results view and detail view. 
 
 ## How to help
 
@@ -66,6 +66,8 @@ src/css/style.css    ← all styles
 - Keep the explanations simple, because I learn best by following along, rather than reading long sets of instructions.
 - Use querySelector instead of getElementById. 
 - Use safe DOM methods instead of innerHTML when possible, so that the code is not risky. 
-- Prefer named event handler functions instead of inline anonymous functions
-- Use event delegation instead of adding listeners to every element
-- Do not create multiple HTML pages — use view functions to simulate screens
+- Prefer named event handler functions instead of inline anonymous functions.
+- Use event delegation instead of adding listeners to every element.
+- Do not create multiple HTML pages — use view functions to simulate screens.
+- Use `.closest()` when handling click events to correctly identify the target element.
+- Store state (like filtered results) in variables instead of recalculating unnecessarily.
