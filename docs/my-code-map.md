@@ -13,9 +13,9 @@ For each file, write one sentence about what it does.
 | `src/js/app.js`         | Handles the form submission, collects the user input, updates the page with matching results, and filters the shows. |
 | `src/js/matching.js`    | Contains the function that checks if a show matches the users filters. |
 | `src/js/data.js`        | Stores the dataset of the TV shows and the properties of them. |
-| `src/js/experiments.js` | Contains Week 2 DOM experiments which were used to practice manipulation of elements on the page. |
 | `src/css/style.css`     | Defines the visual styling and layout of the website. |
 | `index.html`            | Provides the structure of the webpage, including the form and results container. |
+| `src/js/views.js` | Contains the view functions that build and display the results view, no-results view, and detail view. |
 
 ---
 
@@ -58,10 +58,12 @@ Where do results appear on the page?
 Look at how your app.js builds each result card. What elements make up one card?
 
 - Card element type: `div`
-- Card class name: `show-item`
+- Card class name: `show-item advice-card`
 
 - What is inside each card? (list the child elements and what data they show)
-  -
+  
+  - `h3` showing the show title
+  - `p` showing the genre line for the show
 
 ---
 
@@ -71,7 +73,9 @@ Look through your app.js for any `addEventListener` calls. List each one.
 
 | Where in the code | Event type | What it does |
 | ----------------- | ---------- | ------------ |
-|'form.addEventListener('submit', ....)'|'submit'|This stops the page from refreshing, reads the selected values, filters, and sows the matching results|
+| `form.addEventListener('submit', handleFormSubmit)` | `submit` | Stops the page refresh, reads the selected filters, filters the shows, and displays matching results. |
+| `results.addEventListener('click', handleCardClick)` | `click` | Uses event delegation to detect when a show card is clicked and opens the detail view. |
+| `results.addEventListener('click', handleBackClick)` | `click` | Detects when the back button is clicked and restores the previous results view. |
 
 If you do not see any `addEventListener` calls, write "none found" — and then look again, because the form handler uses one.
 

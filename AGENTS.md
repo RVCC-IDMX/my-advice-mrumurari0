@@ -21,8 +21,15 @@ Now understands how to use event delegation with '.closest()', data attributes, 
 - `const` by default; `let` only when reassignment needed; never `var`
 - `textContent` for user input in DOM; `innerHTML` only for hardcoded template literals
 - No `eval()`; `console.log` is allowed for debugging during development
-- No `fetch()`, `async`, `await`, or Promises — all data must come from the local `data.js` array
 - Logic functions (filtering, matching, data) must not touch the DOM — keep them testable
+- Use `async`/`await` instead of `.then()` chains when working with fetch requests
+- Always wrap fetch requests in `try/catch`
+- Always check `response.ok` before parsing API responses
+- Show API or fetch errors in the DOM, not only in the console
+- Use defensive checks when rendering API data because fields may be missing
+- Keep API fetching logic separate from DOM rendering logic
+- Use localStorage carefully with try/catch wrappers because stored data can become corrupted
+- Serverless functions should transform external API data into the shape the app already expects
 
 ### HTML
 
@@ -71,3 +78,6 @@ src/css/style.css    ← all styles
 - Do not create multiple HTML pages — use view functions to simulate screens.
 - Use `.closest()` when handling click events to correctly identify the target element.
 - Store state (like filtered results) in variables instead of recalculating unnecessarily.
+- Explain async/await and fetch step-by-step because APIs are still new to me.
+- Prefer safe error handling over short code when working with APIs.
+- Help me understand what layer is enforcing a rule (AGENTS.md, ESLint, Git hooks, or build tools).
