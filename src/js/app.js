@@ -1,6 +1,27 @@
-import { shows } from './data.js';
 import { meetsAllCriteria } from './matching.js';
 import { showResults, showNoResults, showDetail } from './views.js';
+
+// Cache functions with try/catch wrappers for safe localStorage access
+function loadCache(key) {
+  try {
+    const saved = localStorage.getItem(key);
+    if (!saved) return null;
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return null;
+    return parsed;
+  } catch {
+    localStorage.removeItem(key);
+    return null;
+  }
+}
+
+function saveCache(key, data) {
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch {
+    /* quota exceeded or private browsing — safe to ignore */
+  }
+}
 
 // Heading update
 const heading = document.querySelector('h1');
@@ -19,10 +40,53 @@ document.querySelector('main').append(experimentParagraph);
 const form = document.querySelector('#recommendation-form');
 const results = document.querySelector('#results');
 
+let allShows = [];
 let lastResults = [];
 
+function showLoadingMessage() {
+  results.textContent = 'Loading shows...';
+}
+
+function showErrorMessage(message) {
+  results.textContent = message;
+}
+
+async function loadShows() {
+  // Check cache first
+  const cached = loadCache('shows');
+  if (cached) {
+    allShows = cached;
+    lastResults = allShows;
+    showResults(allShows, results);
+    return;
+  }
+
+  // If cache is empty, fetch from API
+  showLoadingMessage();
+
+  try {
+    const response = await fetch('/.netlify/functions/api');
+
+    if (!response.ok) {
+      throw new Error('Could not load shows from the API.');
+    }
+
+    allShows = await response.json();
+    lastResults = allShows;
+
+    // Save the fetched data to cache
+    saveCache('shows', allShows);
+
+    showResults(allShows, results);
+  } catch {
+    showErrorMessage(
+      'Sorry, the show recommendations could not load right now. Please try again later.'
+    );
+  }
+}
+
 // This form handler stops the page from refreshing, reads the selected filters,
-// filters the show data, and sends matching shows to the view functions.
+// filters the fetched show data, and sends matching shows to the view functions.
 function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -38,7 +102,9 @@ function handleFormSubmit(event) {
     platform: platformSelect.value,
   };
 
-  const filtered = shows.filter((show) => meetsAllCriteria(show, preferences));
+  const filtered = allShows.filter((show) =>
+    meetsAllCriteria(show, preferences)
+  );
   lastResults = filtered;
 
   if (filtered.length === 0) {
@@ -56,7 +122,9 @@ function handleCardClick(event) {
     return;
   }
 
-  const selectedShow = shows.find((show) => show.title === card.dataset.title);
+  const selectedShow = allShows.find(
+    (show) => String(show.id) === card.dataset.id
+  );
 
   if (!selectedShow) {
     return;
@@ -76,3 +144,5 @@ function handleBackClick(event) {
 form.addEventListener('submit', handleFormSubmit);
 results.addEventListener('click', handleCardClick);
 results.addEventListener('click', handleBackClick);
+
+loadShows();
