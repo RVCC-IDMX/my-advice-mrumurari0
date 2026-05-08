@@ -59,11 +59,11 @@ Use this checklist to make sure you have completed every part of the assignment.
 
 ## Part 4 — Deploy and reflect
 
-- [ ] If API key needed: environment variable set in Netlify UI
-- [ ] Deployed to Netlify with `netlify deploy --prod`
-- [ ] Deployed site shows API data correctly
-- [ ] Filled out `docs/my-code-map-v2-additions.md`
-- [ ] Completed `docs/reflections/week-4-reflection.md`
+- [-] If API key needed: environment variable set in Netlify UI
+- [-] Deployed to Netlify with `netlify deploy --prod`
+- [-] Deployed site shows API data correctly
+- [-] Filled out `docs/my-code-map-v2-additions.md`
+- [-] Completed `docs/reflections/week-4-reflection.md`
 - [ ] Ran `npm run lint` — passes
 - [ ] Ran `npm run build` — builds successfully
 - [ ] Pushed to GitHub
