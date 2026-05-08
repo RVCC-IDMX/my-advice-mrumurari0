@@ -49,8 +49,8 @@ Use this checklist to make sure you have completed every part of the assignment.
 - [-] Ran `npm run lint` — passes
 - [-] Ran `npm run build` — builds successfully
 - [-] Deployed to Netlify
-- [ ] Pushed to GitHub
-- [ ] GitHub Actions lint check shows green
+- [-] Pushed to GitHub
+- [-] GitHub Actions lint check shows green
 
 ## What to submit
 
