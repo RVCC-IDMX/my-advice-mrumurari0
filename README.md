@@ -1,3 +1,5 @@
+Live site: https://what-should-i-watch-mrudula.netlify.app/
+
 # My Advice
 
 This repo gives you a fully configured professional tooling setup. Your job is to use an AI agent conversation to plan and build your personal "What Should I...?" site inside it.
