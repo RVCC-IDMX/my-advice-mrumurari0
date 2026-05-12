@@ -14,6 +14,7 @@
         "npm:eslint-plugin-unicorn@58",
         "npm:eslint@^9.25.0",
         "npm:globals@16",
+        "npm:groq-sdk@^1.2.0",
         "npm:husky@^9.1.7",
         "npm:lint-staged@^15.4.3",
         "npm:prettier@^3.4.2",

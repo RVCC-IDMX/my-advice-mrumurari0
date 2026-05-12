@@ -23,18 +23,15 @@ function saveCache(key, data) {
   }
 }
 
-// Heading update
 const heading = document.querySelector('h1');
 heading.textContent = 'My Advice — Personalized TV Show Recommendations';
 
-// Button text update
 const button = document.querySelector('button');
 button.textContent = 'Search Shows';
 
-// Helpful paragraph under form
 const experimentParagraph = document.createElement('p');
 experimentParagraph.textContent =
-  'Use the filters above to discover your next favorite show.';
+  'Describe what you want to watch, then use the filters to narrow your results.';
 document.querySelector('main').append(experimentParagraph);
 
 const form = document.querySelector('#recommendation-form');
@@ -51,9 +48,10 @@ function showErrorMessage(message) {
   results.textContent = message;
 }
 
-async function loadShows() {
-  // Check cache first
-  const cached = loadCache('shows');
+async function loadShows(prompt = '') {
+  const cacheKey = `shows-${prompt || 'default'}`;
+  const cached = loadCache(cacheKey);
+
   if (cached) {
     allShows = cached;
     lastResults = allShows;
@@ -61,22 +59,27 @@ async function loadShows() {
     return;
   }
 
-  // If cache is empty, fetch from API
   showLoadingMessage();
 
   try {
-    const response = await fetch('/.netlify/functions/api');
+    const response = await fetch(
+      `/.netlify/functions/api?prompt=${encodeURIComponent(prompt)}`
+    );
 
     if (!response.ok) {
       throw new Error('Could not load shows from the API.');
     }
 
-    allShows = await response.json();
+    const data = await response.json();
+
+    if (data.refused) {
+      showErrorMessage(data.refusal_reason);
+      return;
+    }
+
+    allShows = data;
     lastResults = allShows;
-
-    // Save the fetched data to cache
-    saveCache('shows', allShows);
-
+    saveCache(cacheKey, allShows);
     showResults(allShows, results);
   } catch {
     showErrorMessage(
@@ -85,13 +88,16 @@ async function loadShows() {
   }
 }
 
-// This form handler stops the page from refreshing, reads the selected filters,
-// filters the fetched show data, and sends matching shows to the view functions.
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
 
+  const promptInput = document.querySelector('#prompt-input');
   const moodSelect = document.querySelector('#mood-select');
   const genreSelect = document.querySelector('#genre-select');
+
+  const prompt = promptInput.value.trim();
+
+  await loadShows(prompt);
 
   const preferences = {
     mood: moodSelect.value,
@@ -101,6 +107,7 @@ function handleFormSubmit(event) {
   const filtered = allShows.filter((show) =>
     meetsAllCriteria(show, preferences)
   );
+
   lastResults = filtered;
 
   if (filtered.length === 0) {

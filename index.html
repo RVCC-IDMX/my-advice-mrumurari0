@@ -15,23 +15,23 @@
     <main>
       <form id="recommendation-form">
         <div>
+          <label for="prompt-input">Describe what you want to watch:</label>
+          <input
+            type="text"
+            id="prompt-input"
+            name="prompt"
+            maxlength="500"
+            placeholder="Example: dark mystery shows with high ratings"
+          />
+        </div>
+
+        <div>
           <label for="mood-select">Mood:</label>
           <select id="mood-select" name="mood">
             <option value="Any mood">Any mood</option>
             <option value="lighthearted">Lighthearted</option>
-            <option value="comfort">Comfort</option>
-            <option value="funny">Funny</option>
-            <option value="wholesome">Wholesome</option>
             <option value="thoughtful">Thoughtful</option>
-            <option value="thrilling">Thrilling</option>
-            <option value="mind-bending">Mind-bending</option>
             <option value="adventurous">Adventurous</option>
-            <option value="intense">Intense</option>
-            <option value="emotional">Emotional</option>
-            <option value="focused">Focused</option>
-            <option value="spooky">Spooky</option>
-            <option value="slow-burn">Slow-burn</option>
-            <option value="dark">Dark</option>
           </select>
         </div>
 
