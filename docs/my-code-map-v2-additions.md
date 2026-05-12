@@ -58,10 +58,10 @@ In Part 3A you added field(s) from the live API that your static data did not ha
 
 ---
 
-## localStorage cacheshows'`
+## localStorage cache
+
+- What key do you pass to `localStorage.setItem()`? `'shows'`
 - What shape is the cached data? (array of objects, single object, etc.): `Array of show objects`
 - Where is your `loadCache` function? (file and function name): `src/js/app.js` in the `loadCache()` function
 - Where is your `saveCache` function? (file and function name): `src/js/app.js` in the `saveCache()` function
-- When does your app use the cache instead of fetching? `On page load, if the cache key 'shows' exists and contains valid array data________`
-- Where is your `saveCache` function? (file and function name): `___________`
-- When does your app use the cache instead of fetching? `___________`
+- When does your app use the cache instead of fetching? `On page load, if the cache key 'shows' exists and contains valid array data`
