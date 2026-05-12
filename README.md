@@ -1,5 +1,14 @@
 Live site: https://what-should-i-watch-mrudula.netlify.app/
 
+## Environment Variables
+
+This project requires:
+
+- TMDB_API_KEY
+- GROQ_API_KEY
+
+Both must be added in Netlify environment variables for the deployed serverless functions to work.
+
 # My Advice
 
 This repo gives you a fully configured professional tooling setup. Your job is to use an AI agent conversation to plan and build your personal "What Should I...?" site inside it.
