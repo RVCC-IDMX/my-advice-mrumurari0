@@ -12,10 +12,10 @@ const GENRE_BY_ID = {
 };
 
 function moodFromGenre(genre) {
-  if (['comedy', 'family', 'kids', 'animation'].includes(genre))
+  if (['Comedy', 'Family', 'Kids', 'Animation'].includes(genre))
     return 'lighthearted';
-  if (['drama', 'mystery', 'crime'].includes(genre)) return 'thoughtful';
-  if (['action & adventure', 'sci-fi & fantasy'].includes(genre))
+  if (['Drama', 'Mystery', 'Crime'].includes(genre)) return 'thoughtful';
+  if (['Action & Adventure', 'Sci-Fi & Fantasy'].includes(genre))
     return 'exciting';
   return 'any';
 }
@@ -45,9 +45,7 @@ export default async () => {
     const json = await response.json();
 
     const transformedShows = json.results.map((show) => {
-      const genre = (
-        GENRE_BY_ID[show.genre_ids?.[0]] || 'Unknown'
-      ).toLowerCase();
+      const genre = GENRE_BY_ID[show.genre_ids?.[0]] || 'Unknown';
       return {
         id: show.id,
         title: show.name,
