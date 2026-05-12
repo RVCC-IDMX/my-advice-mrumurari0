@@ -5,13 +5,6 @@ export function matchesMood(item, desiredMood) {
   return item.mood === desiredMood;
 }
 
-export function fitsEpisodeLength(item, desiredLength) {
-  if (!desiredLength || desiredLength === 'Any length') {
-    return true;
-  }
-  return item.episodeLength === desiredLength;
-}
-
 export function matchGenre(item, chosenGenre) {
   if (!chosenGenre || chosenGenre === 'Any genre') {
     return true;
@@ -19,19 +12,9 @@ export function matchGenre(item, chosenGenre) {
   return item.genre === chosenGenre;
 }
 
-export function isOnPlatform(item, platformName) {
-  if (!platformName || platformName === 'Any platform') {
-    return true;
-  }
-  return item.platforms.includes(platformName);
-}
-
 export function meetsAllCriteria(item, preferences) {
   return (
-    matchesMood(item, preferences.mood) &&
-    matchGenre(item, preferences.genre) &&
-    fitsEpisodeLength(item, preferences.episodeLength) &&
-    isOnPlatform(item, preferences.platform)
+    matchesMood(item, preferences.mood) && matchGenre(item, preferences.genre)
   );
 }
 

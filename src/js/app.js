@@ -92,14 +92,10 @@ function handleFormSubmit(event) {
 
   const moodSelect = document.querySelector('#mood-select');
   const genreSelect = document.querySelector('#genre-select');
-  const lengthSelect = document.querySelector('#length-select');
-  const platformSelect = document.querySelector('#platform-select');
 
   const preferences = {
     mood: moodSelect.value,
     genre: genreSelect.value,
-    episodeLength: lengthSelect.value,
-    platform: platformSelect.value,
   };
 
   const filtered = allShows.filter((show) =>

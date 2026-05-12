@@ -1,3 +1,25 @@
+const GENRE_BY_ID = {
+  10759: 'Action & Adventure',
+  35: 'Comedy',
+  18: 'Drama',
+  10765: 'Sci-Fi & Fantasy',
+  9648: 'Mystery',
+  80: 'Crime',
+  10751: 'Family',
+  16: 'Animation',
+  10762: 'Kids',
+  // Partial map — extend from /genre/tv/list when needed
+};
+
+function moodFromGenre(genre) {
+  if (['Comedy', 'Family', 'Kids', 'Animation'].includes(genre))
+    return 'lighthearted';
+  if (['Drama', 'Mystery', 'Crime'].includes(genre)) return 'thoughtful';
+  if (['Action & Adventure', 'Sci-Fi & Fantasy'].includes(genre))
+    return 'exciting';
+  return 'any';
+}
+
 export default async () => {
   try {
     const apiKey = process.env.TMDB_API_KEY;
@@ -23,6 +45,7 @@ export default async () => {
     const json = await response.json();
 
     const transformedShows = json.results.map((show) => {
+      const genre = GENRE_BY_ID[show.genre_ids?.[0]] || 'Unknown';
       return {
         id: show.id,
         title: show.name,
@@ -31,6 +54,8 @@ export default async () => {
         popularity: show.popularity,
         firstAirDate: show.first_air_date,
         posterPath: show.poster_path,
+        genre,
+        mood: moodFromGenre(genre),
       };
     });
 
